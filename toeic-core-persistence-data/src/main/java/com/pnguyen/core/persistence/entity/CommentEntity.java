@@ -5,7 +5,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "comment")
-public class Comment {
+public class CommentEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer commentId;
@@ -13,16 +13,16 @@ public class Comment {
     @Column(name = "content")
     private String content;
 
-    @Column(name = "createDate")
+    @Column(name = "createddate")
     private String createdDate;
 
     @ManyToOne
     @JoinColumn(name = "userid")
-    private User user;
+    private UserEntity userEntity;
 
     @ManyToOne
     @JoinColumn(name = "listenguidelineid")
-    private ListenGuideline listenGuideline;
+    private ListenGuidelineEntity listenGuidelineEntity;
 
     public Integer getCommentId() {
         return commentId;
@@ -48,19 +48,19 @@ public class Comment {
         this.createdDate = createdDate;
     }
 
-    public User getUser() {
-        return user;
+    public UserEntity getUserEntity() {
+        return userEntity;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUserEntity(UserEntity userEntity) {
+        this.userEntity = userEntity;
     }
 
-    public ListenGuideline getListenGuideline() {
-        return listenGuideline;
+    public ListenGuidelineEntity getListenGuidelineEntity() {
+        return listenGuidelineEntity;
     }
 
-    public void setListenGuideline(ListenGuideline listenGuideline) {
-        this.listenGuideline = listenGuideline;
+    public void setListenGuidelineEntity(ListenGuidelineEntity listenGuidelineEntity) {
+        this.listenGuidelineEntity = listenGuidelineEntity;
     }
 }

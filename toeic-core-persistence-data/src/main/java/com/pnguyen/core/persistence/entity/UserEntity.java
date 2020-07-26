@@ -1,43 +1,34 @@
 package com.pnguyen.core.persistence.entity;
 
-import sun.util.resources.Bundles;
-
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.List;
 
 @Entity
 @Table(name = "user")
-public class User {
+public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer userId;
+
     @Column(name = "name")
     private String name;
+
     @Column(name = "password")
-    private  String password;
+    private String password;
+
     @Column(name = "fullname")
     private String fullName;
+
     @Column(name = "createdDate")
     private Timestamp createdDate;
 
-    /*
-    * Foreign Key
-    * */
     @ManyToOne
     @JoinColumn(name = "roleid")
-    private Role role;
+    private RoleEntity roleEntity;
 
-    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
-    private List<Comment> commentList;
-
-    public Role getRole() {
-        return role;
-    }
-
-    public void setRole(Role role) {
-        this.role = role;
-    }
+    @OneToMany(mappedBy = "userEntity", fetch = FetchType.LAZY)
+    private List<CommentEntity> commentEntityList;
 
     public Integer getUserId() {
         return userId;
@@ -77,5 +68,21 @@ public class User {
 
     public void setCreatedDate(Timestamp createdDate) {
         this.createdDate = createdDate;
+    }
+
+    public RoleEntity getRoleEntity() {
+        return roleEntity;
+    }
+
+    public void setRoleEntity(RoleEntity roleEntity) {
+        this.roleEntity = roleEntity;
+    }
+
+    public List<CommentEntity> getCommentEntityList() {
+        return commentEntityList;
+    }
+
+    public void setCommentEntityList(List<CommentEntity> commentEntityList) {
+        this.commentEntityList = commentEntityList;
     }
 }

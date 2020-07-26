@@ -6,7 +6,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "listenguideline")
-public class ListenGuideline {
+public class ListenGuidelineEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer listenGuidelineId;
@@ -20,14 +20,14 @@ public class ListenGuideline {
     @Column(name = "content")
     private String content;
 
-    @Column(name = "createate")
+    @Column(name = "createddate")
     private Timestamp createdDate;
 
-    @Column(name = "modifiedDate")
+    @Column(name = "modifieddate")
     private Timestamp modifiedDate;
 
-    @OneToMany(mappedBy = "listenGuideline", fetch = FetchType.LAZY)
-    private List<Comment> commentList;
+    @OneToMany(mappedBy = "listenGuidelineEntity", fetch = FetchType.LAZY)
+    private List<CommentEntity> commentEntityList;
 
     public Integer getListenGuidelineId() {
         return listenGuidelineId;
@@ -75,6 +75,14 @@ public class ListenGuideline {
 
     public void setModifiedDate(Timestamp modifiedDate) {
         this.modifiedDate = modifiedDate;
+    }
+
+    public List<CommentEntity> getCommentEntityList() {
+        return commentEntityList;
+    }
+
+    public void setCommentEntityList(List<CommentEntity> commentEntityList) {
+        this.commentEntityList = commentEntityList;
     }
 }
 

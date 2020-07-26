@@ -5,19 +5,16 @@ import java.util.List;
 
 @Entity
 @Table(name = "role")
-public class Role {
+public class RoleEntity {
     @Id
     @Column(name = "roleid")
     private Integer roleId;
+
     @Column(name = "name")
     private String name;
 
-    /*
-    * Mapping Foreign Key
-    * */
-
-    @OneToMany(mappedBy = "role", fetch = FetchType.LAZY)
-    private List<User> userList;
+    @OneToMany(mappedBy = "roleEntity", fetch = FetchType.LAZY)
+    private List<UserEntity> userEntityList;
 
     public Integer getRoleId() {
         return roleId;
@@ -33,5 +30,13 @@ public class Role {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<UserEntity> getUserEntityList() {
+        return userEntityList;
+    }
+
+    public void setUserEntityList(List<UserEntity> userEntityList) {
+        this.userEntityList = userEntityList;
     }
 }

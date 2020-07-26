@@ -10,9 +10,9 @@
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="show_sql">true</property>
-        <mapping class="com.pnguyen.core.persistence.entity.Role"/>
-        <mapping class="com.pnguyen.core.persistence.entity.User"/>
-        <mapping class="com.pnguyen.core.persistence.entity.ListenGuideline"/>
-        <mapping class="com.pnguyen.core.persistence.entity.Comment"/>
+        <mapping class="com.pnguyen.core.persistence.entity.RoleEntity"/>
+        <mapping class="com.pnguyen.core.persistence.entity.UserEntity"/>
+        <mapping class="com.pnguyen.core.persistence.entity.ListenGuidelineEntity"/>
+        <mapping class="com.pnguyen.core.persistence.entity.CommentEntity"/>
     </session-factory>
 </hibernate-configuration>
