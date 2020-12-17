@@ -8,11 +8,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/admin-home.html")
-public class AdminController extends HttpServlet {
+@WebServlet("/login.html")
+public class LoginController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        RequestDispatcher rd = req.getRequestDispatcher("/views/admin/home.jsp");
+        RequestDispatcher rd = req.getRequestDispatcher("/views/web/login.jsp");
         rd.forward(req, resp);
     }
 
