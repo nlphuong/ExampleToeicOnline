@@ -1,4 +1,4 @@
-package com.pnguyen.core.test;
+package com.pnguyen.api.test;
 
 import com.pnguyen.core.DAO.RoleDAO;
 import com.pnguyen.core.DAOImpl.RoleDAOImpl;
@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RoleTest {
+public class ApiTest {
     @Test
     public void checkFindAll(){
         RoleDAO roleDAO = new RoleDAOImpl();
