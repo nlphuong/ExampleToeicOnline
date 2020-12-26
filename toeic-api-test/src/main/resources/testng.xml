@@ -3,6 +3,7 @@
     <test name="case1">
         <classes>
             <class name="com.pnguyen.api.test.ApiTest"/>
+            <class name="com.pnguyen.api.test.LoginTest"/>
         </classes>
     </test>
 </suite>
