@@ -2,7 +2,10 @@ package com.pnguyen.controllers.admin;
 
 import com.pnguyen.command.UserCommand;
 import com.pnguyen.core.dto.UserDTO;
+import com.pnguyen.core.service.UserService;
+import com.pnguyen.core.sevice.impl.UserServiceImpl;
 import com.pnguyen.core.web.utils.FormUtil;
+import com.pnguyen.web.logic.common.WebConstant;
 import org.apache.log4j.Logger;
 
 import javax.servlet.RequestDispatcher;
@@ -26,6 +29,24 @@ public class LoginController extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         UserCommand command = FormUtil.populate(UserCommand.class, req);
         UserDTO pojo = command.getPojo();
+        UserService userService =  new UserServiceImpl();
+        try{
+            if(userService.isUserExist(pojo) != null){
+                if (userService.findRoleByUser(pojo) != null && userService.findRoleByUser(pojo).getRoleDTO() != null){
+                    if (userService.findRoleByUser(pojo).getRoleDTO().getName().equals(WebConstant.ROLE_ADMIN)){
+                        req.setAttribute(WebConstant.ALERT,WebConstant.TYPE_SUCCESS);
+                        req.setAttribute(WebConstant.MESSAGE_RESPONSE, "Admin đăng nhập Thành công");
+                    }else if (userService.findRoleByUser(pojo).getRoleDTO().getName().equals(WebConstant.ROLE_USER)){
+                        req.setAttribute(WebConstant.ALERT,WebConstant.TYPE_SUCCESS);
+                        req.setAttribute(WebConstant.MESSAGE_RESPONSE, "User đăng nhập Thành công");
+                    }
+                }
+            }
+        }catch (NullPointerException e){
+            logger.error(e.getMessage(), e);
+            req.setAttribute(WebConstant.ALERT,WebConstant.TYPE_ERROR);
+            req.setAttribute(WebConstant.MESSAGE_RESPONSE, "Tên hoặc mật khẩu sai ");
+        }
         RequestDispatcher rd = req.getRequestDispatcher("/views/web/login.jsp");
         rd.forward(req, resp);
     }
