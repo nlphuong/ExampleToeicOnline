@@ -29,3 +29,5 @@
 /.idea
 /.idea/encodings.xml
 /*.iml
+/toeic-core-data/target/
+/toeic-core-data/target/classes/com/pnguyen/core/data/DAO/
