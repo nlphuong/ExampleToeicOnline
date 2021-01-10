@@ -4,6 +4,8 @@
         <classes>
             <class name="com.pnguyen.api.test.ApiTest"/>
             <class name="com.pnguyen.api.test.LoginTest"/>
+            <class name="com.pnguyen.api.test.ListenGuidelineTest"/>
+            <class name="com.pnguyen.api.test.reviewHashMap"/>
         </classes>
     </test>
 </suite>

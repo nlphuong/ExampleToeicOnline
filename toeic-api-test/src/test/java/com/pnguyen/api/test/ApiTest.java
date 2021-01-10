@@ -44,7 +44,7 @@ public class ApiTest {
 
     }
 
-    @Test
+    /*@Test
     public void checkFindByProperty(){
         RoleDAO roleDAO = new RoleDAOImpl();
         String property = null;
@@ -53,7 +53,7 @@ public class ApiTest {
         String sortDirection = null;
 
         Object[] objects = roleDAO.findByProperty(property,value,sortExpression,sortDirection);
-    }
+    }*/
 
     /*@Test
     public void  checkDelete(){
