@@ -12,6 +12,7 @@
 <html>
     <head>
         <title><fmt:message key="label.guideline.listen.edit" bundle="${lang}"/></title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     </head>
     <body>
         <div class="main-content">
@@ -82,10 +83,24 @@
                         </div>
                     </div>
                 </div>
+                <h2>This is a heading</h2>
+
+                <p>This is a paragraph.</p>
+                <p>This is another paragraph.</p>
+
+                <button>Click me to hide paragraphs</button>
             </div>
         </div>
+        <script>
+            $(document).ready(function(){
+                hideAllWhenClickButton();
+            });
+            function hideAllWhenClickButton() {
+                $("button").click(function(){
+                    $("p").hide();
+                });
+            }
+        </script>
     </body>
 </html>
-<script>
 
-</script>
