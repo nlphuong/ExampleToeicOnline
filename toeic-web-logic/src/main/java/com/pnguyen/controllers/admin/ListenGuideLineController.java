@@ -9,6 +9,7 @@ import com.pnguyen.core.web.utils.FormUtil;
 import com.pnguyen.core.web.utils.RequestUtil;
 import com.pnguyen.web.logic.common.WebConstant;
 import org.apache.commons.fileupload.FileUploadException;
+import org.apache.log4j.Logger;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -18,12 +19,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 
 @WebServlet(urlPatterns = {"/admin-guideline-listen-list.html","/admin-guideline-listen-edit.html"})
 public class ListenGuideLineController extends HttpServlet {
+    private final Logger logger = Logger.getLogger(this.getClass());
     private ListenGuidelineService guidelineService = new ListenGuidelineServiceImpl();
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -56,23 +56,50 @@ public class ListenGuideLineController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        ListenGuidelineCommand command = new ListenGuidelineCommand();
         UploadUtil uploadUtil = new UploadUtil();
         ResourceBundle bundle = ResourceBundle.getBundle("ApplicationResources");
         HttpSession session = req.getSession();
+        Set<String> titleValue = buildSetValuesListenGuideline();
         try {
-            uploadUtil.writeOrUpdateFile(req);
-            /*req.setAttribute(WebConstant.ALERT, WebConstant.TYPE_SUCCESS);
-            req.setAttribute(WebConstant.MESSAGE_RESPONSE, bundle.getString("label.guideline.listen.add.success"));*/
+            Object[] objects = uploadUtil.writeOrUpdateFile(req, titleValue, WebConstant.LISTENGUIDELINE);
+            Map<String, String> mapValue = (Map<String, String>) objects[3];
+            command = returnValuesListenGuidelineCommand(titleValue, command, mapValue);
+
             session.setAttribute(WebConstant.ALERT, WebConstant.TYPE_SUCCESS);
             session.setAttribute(WebConstant.MESSAGE_RESPONSE, bundle.getString("label.guideline.listen.add.success"));
         } catch (FileUploadException e) {
+            logger.error(e.getMessage(),e);
             session.setAttribute(WebConstant.ALERT, WebConstant.TYPE_ERROR);
             session.setAttribute(WebConstant.MESSAGE_RESPONSE, bundle.getString("label.error"));
         } catch (Exception e) {
+            logger.error(e.getMessage(),e);
             session.setAttribute(WebConstant.ALERT, WebConstant.TYPE_ERROR);
             session.setAttribute(WebConstant.MESSAGE_RESPONSE, bundle.getString("label.error"));
         }
 
-        resp.sendRedirect("/admin-guideline-listen-edit.html?urlType=url_list");
+        resp.sendRedirect("/admin-guideline-listen-list.html?urlType=url_list");
+    }
+
+    private ListenGuidelineCommand returnValuesListenGuidelineCommand(Set<String> titleValue, ListenGuidelineCommand command, Map<String, String> mapValue) {
+        for (String item :
+                titleValue) {
+            if (mapValue.containsKey(item)){
+                if (item.equals("pojo.title")){
+                    command.getPojo().setTitle(mapValue.get(item));
+                }else if (item.equals("pojo.content")){
+                    command.getPojo().setContent(mapValue.get(item));
+                }
+
+            }
+        }
+        return command;
+    }
+
+    private Set<String> buildSetValuesListenGuideline() {
+        Set<String> returnValue = new HashSet<>();
+        returnValue.add("pojo.title");
+        returnValue.add("pojo.content");
+        return returnValue;
     }
 }
