@@ -45,50 +45,26 @@
                                         ${messageResponse}
                                 </div>
                             </c:if>
-                            <form action="${formUrl}" method="post" enctype="multipart/form-data">
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label no-padding-right"><fmt:message
-                                            key="label.guideline.title" bundle="${lang}"/></label>
-                                    <div class="col-sm-9">
-                                        <input type="text" name="pojo.title" id="title" value="${item.pojo.title}"/>
-                                    </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right"></label>
+                                <div class="col-sm-9">
+                                    <h2>This is a heading</h2>
+
+                                    <p>This is a paragraph.</p>
+                                    <p>This is another paragraph.</p>
                                 </div>
-                                <br/>
-                                <br/>
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label no-padding-right"><fmt:message
-                                            key="label.grammarguideline.upload.image" bundle="${lang}"/></label>
-                                    <div class="col-sm-9">
-                                        <input type="file" name="file"/>
-                                    </div>
+                            </div>
+                            <br/>
+                            <br/>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right"></label>
+                                <div class="col-sm-9">
+                                    <button>Click me to hide paragraphs</button>
                                 </div>
-                                <br/>
-                                <br/>
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label no-padding-right"><fmt:message
-                                            key="label.guideline.content" bundle="${lang}"/></label>
-                                    <div class="col-sm-9">
-                                        <input type="text" name="pojo.content" id="content" value="${item.pojo.content}"/>
-                                    </div>
-                                </div>
-                                <br/>
-                                <br/>
-                                <div class="form-group">
-                                    <div class="col-sm-12">
-                                        <input type="submit" class="btn btn-white btn-warning btn-bold"
-                                               value="<fmt:message key="label.done" bundle="${lang}"/>"/>
-                                    </div>
-                                </div>
-                            </form>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <h2>This is a heading</h2>
-
-                <p>This is a paragraph.</p>
-                <p>This is another paragraph.</p>
-
-                <button>Click me to hide paragraphs</button>
             </div>
         </div>
         <script>
