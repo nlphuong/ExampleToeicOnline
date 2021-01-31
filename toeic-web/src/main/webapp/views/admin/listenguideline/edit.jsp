@@ -6,19 +6,22 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@include file="/common/taglib.jsp"%>
+<%@include file="/common/taglib.jsp" %>
 <c:url var="formUrl" value="/admin-guideline-listen-list.html"/>
 
 <html>
     <head>
-        <title><fmt:message key="label.guideline.listen.edit" bundle="${lang}"/> </title>
+        <title><fmt:message key="label.guideline.listen.edit" bundle="${lang}"/></title>
     </head>
     <body>
         <div class="main-content">
             <div class="main-content-inner">
                 <div class="breadcrumbs" id="breadcrumbs">
                     <script type="text/javascript">
-                        try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+                        try {
+                            ace.settings.check('breadcrumbs', 'fixed')
+                        } catch (e) {
+                        }
                     </script>
 
                     <ul class="breadcrumb">
@@ -34,25 +37,47 @@
                         <div class="col-xs-12">
                             <a href="${listenGuidelineEditUrl}" type="button">Them bai HD</a>
                             <c:if test="${not empty messageResponse}">
-                            <div class="alert alert-block alert-${alert}">
-                                <button type="button" class="close" data-dismiss="alert">
-                                    <i class="ace-icon fa fa-times"></i>
-                                </button>
-                                    ${messageResponse}
-                            </div>
+                                <div class="alert alert-block alert-${alert}">
+                                    <button type="button" class="close" data-dismiss="alert">
+                                        <i class="ace-icon fa fa-times"></i>
+                                    </button>
+                                        ${messageResponse}
+                                </div>
                             </c:if>
                             <form action="${formUrl}" method="post" enctype="multipart/form-data">
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label no-padding-right"><fmt:message key="label.grammarguideline.upload.image" bundle="${lang}"/></label>
-                                <div class="col-sm-9">
-                                    <input type="file" name="file"/>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label no-padding-right"><fmt:message
+                                            key="label.guideline.title" bundle="${lang}"/></label>
+                                    <div class="col-sm-9">
+                                        <input type="text" name="pojo.title" id="title" value="${item.pojo.title}"/>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-sm-12">
-                                    <input type="submit" class="btn btn-white btn-warning btn-bold" value="<fmt:message key="label.done" bundle="${lang}"/>"/>
+                                <br/>
+                                <br/>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label no-padding-right"><fmt:message
+                                            key="label.grammarguideline.upload.image" bundle="${lang}"/></label>
+                                    <div class="col-sm-9">
+                                        <input type="file" name="file"/>
+                                    </div>
                                 </div>
-                            </div>
+                                <br/>
+                                <br/>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label no-padding-right"><fmt:message
+                                            key="label.guideline.content" bundle="${lang}"/></label>
+                                    <div class="col-sm-9">
+                                        <input type="text" name="pojo.content" id="content" value="${item.pojo.content}"/>
+                                    </div>
+                                </div>
+                                <br/>
+                                <br/>
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <input type="submit" class="btn btn-white btn-warning btn-bold"
+                                               value="<fmt:message key="label.done" bundle="${lang}"/>"/>
+                                    </div>
+                                </div>
                             </form>
                         </div>
                     </div>
