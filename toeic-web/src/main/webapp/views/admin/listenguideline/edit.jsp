@@ -62,7 +62,8 @@
                                     <button>Click me to hide paragraphs</button>
                                 </div>
                             </div>--%>
-                            <div class="form-group">
+                            <%--    .html()-.val()  Methods                      --%>
+                            <%--<div class="form-group">
                                 <label class="col-sm-3 control-label no-padding-right"></label>
                                 <div class="col-sm-9">
                                     <input type="text" value="JSP-SERVLET myclass.vn" id="value"/>
@@ -83,6 +84,28 @@
                                 <div class="col-sm-9">
                                     <button onclick="usingValAction()">Show Info</button>
                                 </div>
+                            </div>--%>
+                            <%--       .prop()-.attr() Methods                    --%>
+                            <%--<div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right"></label>
+                                <div class="col-sm-9">
+                                    <input type="checkbox"  id="testCheckbox" checked/>
+                                </div>
+                            </div>--%>
+                            <%--        .css()   Method                 --%>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right"></label>
+                                <div class="col-sm-9">
+                                    <p style="color: red" id="demoCssMethod1">Test css method</p>
+                                </div>
+                            </div>
+                            <br/>
+                            <br/>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right"></label>
+                                <div class="col-sm-9">
+                                    <button id="demoCssMethod" onclick="demoCssMethod()">Change Color</button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -90,17 +113,26 @@
             </div>
         </div>
         <script>
-            $(document).ready(function(){
+            $(document).ready(function () {
                 hideAllWhenClickButton();
+
             });
+
             function hideAllWhenClickButton() {
-                $("button").click(function(){
+                $("button").click(function () {
                     $("p").hide();
                 });
             }
+
             function usingValAction() {
                 var value = $('#value').val();
                 $('#showValue').html(value);
+            }
+
+            function demoCssMethod() {
+
+                $('#demoCssMethod1').css("color", "blue");
+
             }
         </script>
     </body>
