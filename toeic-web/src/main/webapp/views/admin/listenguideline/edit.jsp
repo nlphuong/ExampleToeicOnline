@@ -93,7 +93,7 @@
                                 </div>
                             </div>--%>
                             <%--        .css()   Method                 --%>
-                            <div class="form-group">
+                            <%--<div class="form-group">
                                 <label class="col-sm-3 control-label no-padding-right"></label>
                                 <div class="col-sm-9">
                                     <p style="color: red" id="demoCssMethod1">Test css method</p>
@@ -106,7 +106,8 @@
                                 <div class="col-sm-9">
                                     <button id="demoCssMethod" onclick="demoCssMethod()">Change Color</button>
                                 </div>
-                            </div>
+                            </div>--%>
+
                         </div>
                     </div>
                 </div>
