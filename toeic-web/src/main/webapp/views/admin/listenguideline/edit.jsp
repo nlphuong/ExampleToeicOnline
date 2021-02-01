@@ -45,7 +45,7 @@
                                         ${messageResponse}
                                 </div>
                             </c:if>
-                            <div class="form-group">
+                            <%--<div class="form-group">
                                 <label class="col-sm-3 control-label no-padding-right"></label>
                                 <div class="col-sm-9">
                                     <h2>This is a heading</h2>
@@ -61,6 +61,28 @@
                                 <div class="col-sm-9">
                                     <button>Click me to hide paragraphs</button>
                                 </div>
+                            </div>--%>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right"></label>
+                                <div class="col-sm-9">
+                                    <input type="text" value="JSP-SERVLET myclass.vn" id="value"/>
+                                </div>
+                            </div>
+                            <br/>
+                            <br/>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right"></label>
+                                <div class="col-sm-9">
+                                    <p id="showValue">Nothing in this</p>
+                                </div>
+                            </div>
+                            <br/>
+                            <br/>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right"></label>
+                                <div class="col-sm-9">
+                                    <button onclick="usingValAction()">Show Info</button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -75,6 +97,10 @@
                 $("button").click(function(){
                     $("p").hide();
                 });
+            }
+            function usingValAction() {
+                var value = $('#value').val();
+                $('#showValue').html(value);
             }
         </script>
     </body>
