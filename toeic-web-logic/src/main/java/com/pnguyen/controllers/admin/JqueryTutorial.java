@@ -1,6 +1,7 @@
 package com.pnguyen.controllers.admin;
 
 import com.pnguyen.command.JqueryCommand;
+import com.pnguyen.core.dto.JqueryDTO;
 import com.pnguyen.core.web.utils.FormUtil;
 import com.pnguyen.web.logic.common.WebConstant;
 
@@ -11,8 +12,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
-@WebServlet(urlPatterns = {"/admin-closest-method.html","/admin-find-method.html"})
+@WebServlet(urlPatterns = {"/admin-closest-method.html","/admin-find-method.html","/admin-each-function.html"})
 public class JqueryTutorial extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -24,6 +27,20 @@ public class JqueryTutorial extends HttpServlet {
             }
             if (command.getUrlType().equals(WebConstant.URL_FIND_METHOD)) {
                 RequestDispatcher rd = request.getRequestDispatcher("/views/jquery_tutorial/findMethod.jsp");
+                rd.forward(request, response);
+            }
+            if (command.getUrlType().equals(WebConstant.URL_EACH_FUNCTION)) {
+                List<JqueryDTO> jqueryDTOS = new ArrayList<JqueryDTO>();
+                JqueryDTO jqueryDTO1 = new JqueryDTO();
+                jqueryDTO1.setName("myclass");
+                jqueryDTO1.setAddress("online1");
+                jqueryDTOS.add(jqueryDTO1);
+                JqueryDTO jqueryDTO2 = new JqueryDTO();
+                jqueryDTO2.setName("jsp-servlet");
+                jqueryDTO2.setAddress("onlin2e");
+                jqueryDTOS.add(jqueryDTO2);
+                request.setAttribute("listDemo", jqueryDTOS);
+                RequestDispatcher rd = request.getRequestDispatcher("/views/jquery_tutorial/eachFunction.jsp");
                 rd.forward(request, response);
             }
         }
