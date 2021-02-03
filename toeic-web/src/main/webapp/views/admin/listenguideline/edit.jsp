@@ -107,7 +107,10 @@
                                     <button id="demoCssMethod" onclick="demoCssMethod()">Change Color</button>
                                 </div>
                             </div>--%>
-
+                            <%--Jquery change() method--%>
+                            <%--<input type="checkbox" id="sex" onchange="changeValueCheckbox()"/>--%>
+                            <input type="checkbox" id="sex"/>
+                            <p id="textSex"></p>
                         </div>
                     </div>
                 </div>
@@ -116,7 +119,7 @@
         <script>
             $(document).ready(function () {
                 hideAllWhenClickButton();
-
+                changeValueCheckbox();
             });
 
             function hideAllWhenClickButton() {
@@ -134,6 +137,21 @@
 
                 $('#demoCssMethod1').css("color", "blue");
 
+            }
+
+            function changeValueCheckbox() {
+                /*if ($('#sex').prop('checked') == true) {
+                    $('#textSex').html('<h1>Male</h1>');
+                } else {
+                    $('#textSex').html('<h1>Female</h1>');
+                }*/
+                $('#sex').on('change', function () {
+                    if ($('#sex').prop('checked') == true) {
+                        $('#textSex').html('<h1>Male</h1>');
+                    } else {
+                        $('#textSex').html('<h1>Female</h1>');
+                    }
+                });
             }
         </script>
     </body>
